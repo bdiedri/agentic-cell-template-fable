@@ -1,5 +1,7 @@
 # Fable Implementation Work Order — agentic-cell-template-fable
 
+> **Erratum (2026-07-09, recorded from human direction):** The references to prior handoff files (`.claude/agents/pilot-*.md`, `.claude/skills/run-parallel-pilots/SKILL.md`, `CLAUDE_md_additions.md`) were made in error — the parallel-pilot work will live in a **separate repository and project**, to be addressed later. **Batch 2 does not apply to this repository**; treat it as deferred to that project. Batch 1 and Batch 3 apply here.
+
 > ## STOP — read before acting
 > This file is a **spec, not a "go" signal.** Do not implement all of it at once.
 >
