@@ -12,18 +12,25 @@ Use this skill when the user invokes `/ingest-context` or asks to organize, clas
 
 ## Core Behavior
 
-When this skill is invoked:
+Sequence within this skill is at your discretion — the lists below define what must be true, not choreography.
 
-1. Inspect `/context/source-drop`.
-2. Read `/docs/source_authority_model.md`.
-3. Review `/context/source_artifact_index.md`.
-4. Index every source file.
-5. Classify each source by type, topic/category, authority level, and extraction quality.
-6. Create Markdown summaries under `/context/extracted`.
-7. Preserve traceability to original source files.
-8. Surface conflicts, gaps, low-confidence extractions, and human-review needs.
-9. Update decision, assumption, and open-question logs as needed.
-10. Open a PR back into `main`.
+Required inputs:
+
+- `/context/source-drop`
+- `/docs/source_authority_model.md`
+- `/context/source_artifact_index.md`
+
+Required outputs:
+
+- See "Expected Outputs"
+
+Invariants:
+
+- Every source file is indexed and classified by type, topic/category, authority level, and extraction quality.
+- Markdown summaries are created under `/context/extracted`, with traceability preserved to the original source files.
+- Conflicts, gaps, low-confidence extractions, and human-review needs are surfaced.
+- Decision, assumption, and open-question logs are updated as needed.
+- A PR is opened back into `main`.
 
 ## Source Classification Fields
 

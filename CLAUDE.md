@@ -18,7 +18,7 @@ When responding to the user, write in plain language first and use IDs second.
 
 IDs such as decision IDs, assumption IDs, question IDs, source IDs, issue IDs, file IDs, or agent IDs are useful for traceability, but they should not be the main way information is explained to the user.
 
-For any decision, blocker, conflict, or open question, summarize it using this structure:
+For any material decision, blocker, conflict, or open question — anything that belongs in `/docs/decision_log.md` or `/docs/open_questions.md` — summarize it using this structure:
 
 1. Plain-language question or issue
 2. Why it matters
@@ -26,6 +26,8 @@ For any decision, blocker, conflict, or open question, summarize it using this s
 4. Recommended path
 5. Risk if unresolved
 6. Relevant IDs and files for traceability
+
+Trivial choices (naming, formatting, low-stakes defaults) do not require this structure: state them in one sentence with the recommendation inline. The full structure remains mandatory inside the log files themselves.
 
 Do not write user-facing summaries that require the user to understand internal IDs before understanding the issue.
 
@@ -103,6 +105,8 @@ When surfacing multiple decisions or questions, group them by theme and prioriti
 
 ## Persistent Agent Team Rules
 
+This section is the canonical statement of the agent-persistence rules. Other files reference it rather than restating it.
+
 When the project calls for a project-specific agent team, distinguish clearly between:
 
 1. Persistent agents
@@ -113,7 +117,7 @@ Definitions:
 
 - Persistent agents are durable project-level subagents with Markdown definition files under `/.claude/agents/`.
 - Recommended agents are proposed agents documented in `/docs/agent_team_design.md` but not yet created.
-- Simulated agent perspectives are temporary role-based viewpoints used inside a response or task, but they are not durable agents.
+- Simulated agent perspectives are temporary role-based viewpoints used inside a response or task, but they are not durable agents. A simulated perspective is a summarized viewpoint with a stated conclusion (for example, "From a security standpoint: X, because Y"), not a dramatized dialogue or a transcript of deliberation.
 
 Do not say a project-specific agent has been "created," "installed," "defined," or "available" unless a corresponding Markdown file exists under `/.claude/agents/`.
 

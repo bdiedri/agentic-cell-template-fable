@@ -14,82 +14,45 @@ Use this skill when the user invokes `/initialize-project [project title or shor
 
 ## Core Behavior
 
-When this skill is invoked:
+Sequence within this skill is at your discretion — the lists below define what must be true, not choreography.
 
-1. Inspect the current repository structure.
-2. Read the standard template files:
-   - `README.md`
-   - `CLAUDE.md`
-   - `/docs/project_brief.md`
-   - `/docs/product_strategy_and_scope.md`
-   - `/docs/source_authority_model.md`
-   - `/docs/decision_log.md`
-   - `/docs/assumptions_log.md`
-   - `/docs/open_questions.md`
-   - `/docs/agent_team_design.md`
-   - `/docs/workflow_design.md`
-   - `/docs/next_action_plan.md`
-   - `/.claude/agents`
-3. Determine whether the repo is still in template state or already initialized.
-4. Ask the user structured project-formation questions.
-5. Ask the user what source files exist and whether they should be uploaded to `/context/source-drop`.
-6. Recommend the first initialization PR scope.
-7. Do not proceed to build until the user answers the setup questions or explicitly instructs you to make reasonable assumptions.
+Required inputs:
 
-## Structured Questions
+- The current repository structure
+- `README.md` and `CLAUDE.md`
+- The standard `/docs` template files (project brief, strategy and scope, source authority model, decision log, assumptions log, open questions, agent team design, workflow design, next action plan)
+- `/.claude/agents`
 
-Ask the minimum useful set of questions needed to initialize the project. Prefer a concise grouped format.
+Required outputs:
 
-### Project Identity
+- See "Expected Outputs After User Answers"
 
-1. What is the project title?
-2. What is the short description of the project?
-3. Is this primarily a code project, non-code artifact project, strategy project, research project, data project, or mixed project?
+Invariants:
 
-### Objective and Outputs
+- Determine whether the repo is still in template state or already initialized before asking the user anything.
+- Gather the Initialization Information Checklist below: infer what you responsibly can, ask only the rest.
+- Ask what source files exist and whether they should be uploaded to `/context/source-drop`.
+- Recommend the first initialization PR scope.
+- Do not proceed to build until the user has answered the unanswerable checklist items or explicitly instructed you to make reasonable assumptions.
 
-4. What problem is this project trying to solve?
-5. What are the desired outputs or deliverables?
-6. What does “done” look like for the first phase?
+## Initialization Information Checklist
 
-### Users and Stakeholders
+Before writing the project brief, you must know:
 
-7. Who is the primary user, customer, buyer, stakeholder, or audience?
-8. Are there secondary users or reviewers whose needs should be considered?
+- **Identity:** project title, short description, and project type (code / non-code artifact / strategy / research / data / mixed)
+- **Objective and outputs:** the problem being solved, the desired outputs or deliverables, and what "done" looks like for the first phase
+- **Users and stakeholders:** the primary user, customer, buyer, or audience, and any secondary users or reviewers
+- **Strategy and scope:** the north star or broader vision (if any), first-phase scope, explicit non-scope, and any terms, claims, or messages that require caution
+- **Constraints:** whatever governs the work — security, data sensitivity, platform, budget, timeline, policy, legal, regulatory, technical, organizational
+- **Source context:** what source materials exist, which are authoritative, whether they should be uploaded to `/context/source-drop` before further work, and which are historical, speculative, stale, or reference-only
+- **Decisions and authorization:** decisions already made, decisions Claude must not make without human approval, and whether web research, external systems, or connectors are authorized
+- **Agent team and workflow:** whether Claude should recommend the project-specific agent team, whether approved agents should be created immediately or documented first, and whether work proceeds through PRs only or direct commits are acceptable during setup
 
-### Strategy and Scope
-
-9. Is there a north star or broader strategic vision?
-10. What is in scope for the first phase?
-11. What is explicitly out of scope?
-12. Are there terms, claims, or messages that require caution?
-
-### Constraints
-
-13. What constraints should govern the work? Consider security, data sensitivity, platform, budget, timeline, policy, legal, regulatory, technical, and organizational constraints.
-
-### Source Context
-
-14. What source materials are available?
-15. Which sources, if any, are authoritative?
-16. Should source files be uploaded to `/context/source-drop` before further work?
-17. Are any source files historical, speculative, stale, or reference-only?
-
-### Decisions and Approval Gates
-
-18. What decisions have already been made?
-19. What decisions should Claude not make without human approval?
-20. Are web research, external systems, or connectors authorized for this project?
-
-### Agent Team and Workflow
-
-21. Should Claude recommend the project-specific agent team?
-22. Should Claude create project-specific agents immediately after approval, or only document the recommended team first?
-23. Should work proceed through PRs only, or are direct commits acceptable during setup?
+Answer what you can responsibly infer from the repository, the user's description, and any provided sources, and record every inferred answer as an assumption in `/docs/assumptions_log.md`. Batch only the genuinely unanswerable items into at most two rounds of questions, at most four questions per round, blockers first. Do not interrogate the user item by item.
 
 ## Expected Outputs After User Answers
 
-After the user answers the structured questions, create a branch from latest `main` and open a PR back into `main`.
+After the checklist is resolved (answered or covered by approved assumptions), create a branch from latest `main` and open a PR back into `main`.
 
 Create or update:
 
@@ -105,29 +68,13 @@ Create or update:
 
 ## Persistent Agent Team Handling
 
-During initialization, determine whether the project needs a persistent project-specific agent team.
+During initialization, determine whether the project needs a persistent project-specific agent team. Apply the canonical Persistent Agent Team Rules in `CLAUDE.md` — an agent is persistent only if its Markdown file exists under `/.claude/agents/`.
 
-If the user asks for Claude to recommend agents:
-- Document the recommended team in `/docs/agent_team_design.md`.
-- Clearly mark each agent as one of:
-  - Persistent: file exists under `/.claude/agents/`
-  - Recommended: proposed but not yet created
-  - Simulated only: used as a temporary reasoning perspective
+- If the user asks for recommendations: document the team in `/docs/agent_team_design.md`, marking each agent Persistent, Recommended, or Simulated Only.
+- If the user approves creation: create one file per approved agent under `/.claude/agents/` and record each file path in `/docs/agent_team_design.md`.
+- If creation is not approved: document the recommended team only, and recommend `/design-agent-team` as the next step if agent creation is needed.
 
-If the user approves creating the agent team:
-- Create one Markdown file per approved persistent agent under `/.claude/agents/`.
-- Update `/docs/agent_team_design.md` to show the file path for each created agent.
-- Do not say the agent team is created unless the files exist.
-
-If the user has not approved creation:
-- Do not create project-specific agent files.
-- Do not imply a persistent agent team exists.
-- Recommend `/design-agent-team` as the next step if agent creation is needed.
-
-The initialization PR should make clear whether agents were:
-1. created as durable files,
-2. recommended only, or
-3. simulated as temporary perspectives.
+The initialization PR should state which of those three outcomes applies.
 
 ## Recommended First PR
 
@@ -163,13 +110,13 @@ Then recommend running `/ingest-context` after the files are uploaded.
 
 ## If the User Provides Only a Short Description
 
-If the user only provides a short project title or description, do not assume the full project setup. Ask the structured questions first.
+If the user only provides a short project title or description, do not assume the full project setup. Work through the Initialization Information Checklist first: infer what you responsibly can, log those inferences as assumptions, and ask about the rest.
 
 ## Completion Criteria
 
 This skill is complete when:
 
-1. The user has answered the required initialization questions or approved assumptions.
+1. The Initialization Information Checklist is resolved — items answered by the user, or covered by logged assumptions the user has accepted.
 2. The project brief and control-plane docs are updated.
 3. Initial decision gates are documented.
 4. Source context needs are identified.

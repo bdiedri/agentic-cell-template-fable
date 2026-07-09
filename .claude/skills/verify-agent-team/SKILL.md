@@ -12,21 +12,23 @@ Use this skill when the user invokes `/verify-agent-team` or asks whether the ag
 
 ## Core Behavior
 
-When invoked:
+Sequence within this skill is at your discretion — the lists below define what must be true, not choreography.
 
-1. Review `/docs/agent_team_design.md`.
-2. Review `/.claude/agents/`.
-3. Identify all Markdown agent files.
-4. Identify agents documented as recommended.
-5. Identify roles or perspectives that appear to have been simulated in prior artifacts but do not have agent files.
-6. Update `/docs/agent_team_design.md` so each agent or perspective has the correct status:
-   - Persistent
-   - Recommended
-   - Simulated Only
-   - Deferred
-   - Retired
-7. Flag inconsistencies between project documentation and actual files.
-8. Recommend whether any recommended or simulated-only agents should become persistent.
+Required inputs:
+
+- `/docs/agent_team_design.md`
+- `/.claude/agents/`
+
+Required outputs:
+
+- See "Expected Outputs"
+
+Invariants:
+
+- Every agent or perspective mentioned in project documentation carries the correct status: Persistent, Recommended, Simulated Only, Deferred, or Retired.
+- Persistent status is claimed only where a Markdown agent file actually exists.
+- Inconsistencies between project documentation and actual files are flagged.
+- A recommendation is made on whether any recommended or simulated-only agents should become persistent.
 
 ## Expected Outputs
 
