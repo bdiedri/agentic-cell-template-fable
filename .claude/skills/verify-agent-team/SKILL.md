@@ -52,4 +52,4 @@ This skill is complete when:
 3. Simulated-only perspectives are identified.
 4. Inconsistencies are documented.
 5. Recommended next action is clear.
-6. A PR is opened back into `main` if files are changed.
+6. If files are changed, a PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

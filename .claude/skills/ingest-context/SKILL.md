@@ -100,4 +100,4 @@ This skill is complete when:
 3. Extraction quality is recorded.
 4. Markdown summaries are created where feasible.
 5. Conflicts, assumptions, and open questions are surfaced.
-6. A PR is opened back into `main`.
+6. A PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

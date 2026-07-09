@@ -175,4 +175,4 @@ This skill is complete when:
 4. Source context needs are identified.
 5. The recommended project-specific agent team is documented.
 6. The next recommended skill or task is clear.
-7. A PR is opened back into `main`.
+7. A PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

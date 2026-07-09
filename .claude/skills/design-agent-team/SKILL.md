@@ -125,4 +125,4 @@ This skill is complete when:
 2. Each agent has a clear rationale.
 3. Agent creation decisions are surfaced.
 4. The user knows which agents should be created next.
-5. A PR is opened back into `main`.
+5. A PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

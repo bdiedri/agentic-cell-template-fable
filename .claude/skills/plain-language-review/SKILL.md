@@ -99,4 +99,4 @@ This skill is complete when:
 2. Traceability IDs and file references are preserved.
 3. Decisions, questions, and risks are stated plainly.
 4. No substantive meaning is changed without approval.
-5. A PR is opened back into `main` when file changes are made.
+5. When file changes are made, a PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

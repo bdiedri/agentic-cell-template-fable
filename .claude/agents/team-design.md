@@ -1,6 +1,9 @@
 ---
 name: team-design
 description: Use this agent to recommend the project-specific specialist agents needed for a project.
+model: inherit
+effort: high
+tools: Read, Grep, Glob, Write, Edit, Bash
 ---
 
 # Team Design Agent
