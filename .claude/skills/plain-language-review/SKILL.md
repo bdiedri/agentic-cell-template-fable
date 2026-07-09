@@ -8,21 +8,30 @@ Improve human usability of generated project artifacts while preserving traceabi
 
 IDs such as decision IDs, assumption IDs, question IDs, source IDs, file IDs, issue IDs, and agent IDs are useful for traceability. They should not substitute for explanation.
 
+This skill is for auditing accumulated or legacy artifacts. It is not a routine pass over freshly generated output — fresh output should already meet the plain-language standard when written.
+
 ## Invocation
 
 Use this skill when the user invokes `/plain-language-review` or asks to make project outputs easier to understand.
 
 ## Core Behavior
 
-When this skill is invoked:
+Sequence within this skill is at your discretion — the lists below define what must be true, not choreography.
 
-1. Review the target artifact or artifacts.
-2. Identify ID-heavy, unclear, overly compressed, or internally-oriented language.
-3. Rewrite the content so the main point is understandable in plain language.
-4. Preserve IDs, file references, and traceability links.
-5. Move IDs into traceability fields or parenthetical references where appropriate.
-6. Do not change the underlying decision, recommendation, assumption, or source claim unless the user asks for substantive revision.
-7. Flag any content that is unclear because the underlying logic is incomplete.
+Required inputs:
+
+- The target artifact or artifacts
+
+Required outputs:
+
+- See "Expected Outputs"
+
+Invariants:
+
+- ID-heavy, unclear, overly compressed, or internally-oriented language is rewritten so the main point is understandable in plain language.
+- IDs, file references, and traceability links are preserved, moved into traceability fields or parenthetical references where appropriate.
+- The underlying decision, recommendation, assumption, or source claim is not changed unless the user asks for substantive revision.
+- Content that is unclear because the underlying logic is incomplete is flagged, not papered over.
 
 ## Review Targets
 

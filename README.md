@@ -50,13 +50,7 @@ The repository is intentionally project-neutral. It should be copied into a new 
 
 ## Agent Team Persistence
 
-This template distinguishes between recommended agents, simulated perspectives, and persistent agents.
-
-A persistent project-specific agent exists only when a Markdown definition file has been created under `/.claude/agents/`.
-
-During initialization, Claude may recommend an agent team. That recommendation does not mean the agents exist yet.
-
-When the user approves persistent agent creation, Claude should create one `.md` file per approved agent and update `/docs/agent_team_design.md` with the agent status and file path.
+A persistent project-specific agent exists only when a Markdown definition file exists under `/.claude/agents/`. The canonical rules for distinguishing persistent, recommended, and simulated agents are in `CLAUDE.md` ("Persistent Agent Team Rules").
 
 ## Starting Command
 

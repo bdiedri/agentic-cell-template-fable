@@ -12,28 +12,24 @@ Use this skill when the user invokes `/surface-decisions` or asks what decisions
 
 ## Core Behavior
 
-When this skill is invoked:
+Sequence within this skill is at your discretion — the lists below define what must be true, not choreography.
 
-1. Review:
-   - `/docs/project_brief.md`
-   - `/docs/product_strategy_and_scope.md`
-   - `/docs/source_authority_model.md`
-   - `/docs/decision_log.md`
-   - `/docs/assumptions_log.md`
-   - `/docs/open_questions.md`
-   - `/docs/agent_team_design.md`
-   - `/docs/workflow_design.md`
-   - `/docs/next_action_plan.md`
-   - `/context/source_artifact_index.md`
-   - `/context/extracted`, if available
-2. Identify decisions required before the next phase.
-3. Classify decisions as blocker or non-blocker.
-4. Recommend default choices where appropriate.
-5. Identify assumptions currently being made.
-6. Identify open questions requiring user input, source review, or research.
-7. Update decision, assumption, and open-question logs.
-8. Recommend the next action.
-   
+Required inputs:
+
+- The `/docs` control-plane files (project brief, strategy and scope, source authority model, decision log, assumptions log, open questions, agent team design, workflow design, next action plan)
+- `/context/source_artifact_index.md` and `/context/extracted`, if available
+
+Required outputs:
+
+- See "Expected Outputs"
+
+Invariants:
+
+- Decisions required before the next phase are identified and classified as blocker or non-blocker, with default choices recommended where appropriate.
+- Assumptions currently being made and open questions requiring user input, source review, or research are captured.
+- The decision, assumption, and open-question logs are updated.
+- The next action is recommended.
+
 ## User-Facing Summary Requirement
 
 When this skill responds to the user, do not lead with IDs.

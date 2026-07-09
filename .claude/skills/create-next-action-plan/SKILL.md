@@ -12,26 +12,22 @@ Use this skill when the user invokes `/create-next-action-plan`, asks “what ne
 
 ## Core Behavior
 
-When this skill is invoked:
+Sequence within this skill is at your discretion — the lists below define what must be true, not choreography.
 
-1. Review:
-   - `/docs/project_brief.md`
-   - `/docs/product_strategy_and_scope.md`
-   - `/docs/decision_log.md`
-   - `/docs/assumptions_log.md`
-   - `/docs/open_questions.md`
-   - `/docs/agent_team_design.md`
-   - `/docs/workflow_design.md`
-   - `/context/source_artifact_index.md`
-   - `/context/extracted`, if available
-2. Assess current project stage.
-3. Identify what has been completed.
-4. Identify unresolved blockers.
-5. Recommend the next concrete action.
-6. Identify inputs needed for that action.
-7. Identify expected outputs.
-8. Recommend whether the next step should be a skill invocation, agent team design task, source ingestion task, artifact generation task, implementation task, review task, or research task.
-9. Update `/docs/next_action_plan.md`.
+Required inputs:
+
+- The `/docs` control-plane files (project brief, strategy and scope, decision log, assumptions log, open questions, agent team design, workflow design)
+- `/context/source_artifact_index.md` and `/context/extracted`, if available
+
+Required outputs:
+
+- See "Expected Outputs"
+
+Invariants:
+
+- The current project stage, completed work, and unresolved blockers are assessed before anything is recommended.
+- The recommended next action is concrete, with its required inputs, expected outputs, and type (skill invocation, agent team design, source ingestion, artifact generation, implementation, review, or research).
+- `/docs/next_action_plan.md` is updated.
 
 ## Response Format
 
