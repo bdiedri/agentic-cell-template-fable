@@ -1,6 +1,9 @@
 ---
 name: workflow-architect
 description: Use this agent to design the project workflow, phase structure, PR cadence, and repeatable execution pattern.
+model: inherit
+effort: high
+tools: Read, Grep, Glob, Write, Edit, Bash
 ---
 
 # Workflow Architect Agent

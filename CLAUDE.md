@@ -46,6 +46,12 @@ When surfacing multiple decisions or questions, group them by theme and prioriti
 - If work has accumulated across multiple draft branches, consolidate into a clean PR against `main` before final review.
 - Do not treat a PR as approved simply because it was created.
 
+## Completion Claims and Evidence
+
+- Any claim that work is complete must cite its artifact — commit SHA, PR number/URL, or file paths. A claim without an artifact is a plan, not progress.
+- Every session must append an entry to `/docs/worklog.md` before ending. Each entry records: date, session purpose, branch, commits and PRs with numbers, state left behind, surprises encountered, and an optional one-line lesson.
+- The worklog is append-only. Do not rewrite or delete prior entries.
+
 ## Source Context Rules
 
 - `/context/source-drop` contains raw source files.
@@ -163,3 +169,19 @@ Use explicit human approval gates before:
 - using external web research
 - connecting external systems
 - treating any source as authoritative
+
+### Standing Authorization
+
+An approval recorded in `/docs/decision_log.md` with status Approved is standing authorization for the described work — do not re-request it. Re-request approval only if the scope of the work has materially changed from what was approved.
+
+### Blocked-at-Gate Landing Protocol
+
+When blocked at an unapproved gate mid-run:
+
+1. Record the open question in `/docs/open_questions.md`.
+2. Push work-in-progress as a **draft** pull request.
+3. Update `/docs/next_action_plan.md` with the blocked state and the required human action.
+4. Append a worklog entry to `/docs/worklog.md`.
+5. End the turn.
+
+Never abandon in-flight work in order to "stop." Stopping at a gate means landing the work safely, not discarding it.

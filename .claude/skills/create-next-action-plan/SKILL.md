@@ -94,4 +94,4 @@ This skill is complete when:
 4. Expected outputs are listed.
 5. Blockers are identified.
 6. A recommended Claude Code prompt or skill invocation is provided.
-7. A PR is opened back into `main`.
+7. A PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

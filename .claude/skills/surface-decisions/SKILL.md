@@ -128,4 +128,4 @@ This skill is complete when:
 3. Assumptions are documented.
 4. Open questions are actionable.
 5. Next recommended action is clear.
-6. A PR is opened back into `main`.
+6. A PR is opened back into `main` and its number is recorded, or the reason it could not be opened is recorded in `/docs/next_action_plan.md`.

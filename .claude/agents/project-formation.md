@@ -1,6 +1,9 @@
 ---
 name: project-formation
 description: Use this agent to initialize a new project, clarify the project objective, identify missing setup information, and create the first project brief.
+model: inherit
+effort: high
+tools: Read, Grep, Glob, Write, Edit, Bash
 ---
 
 # Project Formation Agent

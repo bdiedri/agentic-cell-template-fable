@@ -1,6 +1,9 @@
 ---
 name: source-context
 description: Use this agent to index, classify, extract, and summarize source materials from /context/source-drop.
+model: sonnet
+effort: medium
+tools: Read, Grep, Glob, Write, Edit, Bash
 ---
 
 # Source Context Agent

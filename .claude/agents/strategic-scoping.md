@@ -1,6 +1,9 @@
 ---
 name: strategic-scoping
 description: Use this agent to define north star, strategy, scope, non-scope, expansion path, and scope-control rules.
+model: inherit
+effort: high
+tools: Read, Grep, Glob, Write, Edit, Bash
 ---
 
 # Strategic Scoping Agent
